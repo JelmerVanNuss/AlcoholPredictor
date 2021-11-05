@@ -13,11 +13,14 @@ class HelloWorld(Resource):
 class DataStream(Resource):
     def get(self):
         return "Input data using post"
-    def post(self):
+
+    def put(self):
+        name = request.form['name']
         data = request.form['data']
-        with open("test.json", "w") as f:
-            json.dump(data, f)
+        with open(f"../Data/{name}", "w") as f:
+            f.write(data)
         return "Succesfully added data"
+
 
 api.add_resource(HelloWorld, '/')
 api.add_resource(DataStream, '/data')
