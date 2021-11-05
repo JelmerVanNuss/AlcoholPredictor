@@ -7,7 +7,7 @@ entry_points:
     command: "./merge_data.sh"
 
   data_validation_acc:
-    command: "great-expectations checkpoint run checkpoint_tac2"
+    command: "great-expectations checkpoint run accel_suite"
 
   data_validation_tac:
     command: "great-expectations checkpoint run checkpoint_tac2"
