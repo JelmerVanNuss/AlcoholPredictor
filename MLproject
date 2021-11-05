@@ -20,3 +20,6 @@ entry_points:
 
   train:
     command: "python train.py"
+
+  main:
+    command: "./run_all.sh"
