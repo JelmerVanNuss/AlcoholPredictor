@@ -1,0 +1,25 @@
+name: alcohol-predictor
+
+conda_env: conda.yaml
+
+entry_points:
+  merge_data:
+    command: "./merge_data.sh"
+
+  data_validation_acc:
+    command: "great-expectations checkpoint run checkpoint_tac2"
+
+  data_validation_tac:
+    command: "great-expectations checkpoint run checkpoint_tac2"
+
+  data_train_test_split:
+    command: "python split_data.py"
+
+  data_processing:
+    command: "python process_data.py"
+
+  train:
+    command: "python train.py"
+
+  main:
+    command: "./run_all.sh"

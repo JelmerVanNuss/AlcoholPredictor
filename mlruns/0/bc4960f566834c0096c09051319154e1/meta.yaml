@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/youngmavericks/AlcoholPredictor/mlruns/0/bc4960f566834c0096c09051319154e1/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+name: ''
+run_id: bc4960f566834c0096c09051319154e1
+run_uuid: bc4960f566834c0096c09051319154e1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1636123596080
+status: 1
+tags: []
+user_id: youngmavericks
