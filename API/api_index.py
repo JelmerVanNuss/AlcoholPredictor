@@ -22,7 +22,7 @@ class DataStream(Resource):
         timestamp = timestamp.strftime("%Y-%m-%d-%H-%M-%S")
         data = request.form['data']
 
-        with open(f"Data/{timestamp}.csv", "w") as f:
+        with open(f"../Data/{timestamp}.csv", "w") as f:
             f.write(data)
         return "Succesfully added data"
 
@@ -30,14 +30,8 @@ class Prediction(Resource):
     def get(self):
         return "Geef data"
 
-    def check_data(self,data):
-        d = json.loads(data)
-        if d.keys() != ['IR Voltage', 'Temperature','Time','Date']:
-            return False
-        return True
-
-    def post(self):
-        data = request.form['data']
+    def put(self):
+        data = request.form.to_dict()
         if self.check_data(data):
             model = pck.load(model_path)
             if isinstance(data, list):
@@ -49,6 +43,7 @@ class Prediction(Resource):
 
 api.add_resource(HelloWorld, '/')
 api.add_resource(DataStream, '/data')
+api.add_resource(Prediction, '/predict')
 
 if __name__ == '__main__':
     app.run(debug=True)
