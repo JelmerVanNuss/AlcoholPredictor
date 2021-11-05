@@ -9,11 +9,11 @@ api = Api(app)
 
 class HelloWorld(Resource):
     def get(self):
-        return {'hello': 'world'}
+        return "Martijn is baas van het internet"
 
 class DataStream(Resource):
     def get(self):
-        return "Input data using post"
+        return "Input data using post, data should be under the header \"data\""
 
     def put(self):
         timestamp = datetime.datetime.now()
