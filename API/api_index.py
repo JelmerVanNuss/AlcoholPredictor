@@ -1,6 +1,7 @@
 from flask import Flask, request
 from flask_restful import Resource, Api
 import json
+import datetime
 
 app = Flask(__name__)
 api = Api(app)
@@ -15,9 +16,10 @@ class DataStream(Resource):
         return "Input data using post"
 
     def put(self):
-        name = request.form['name']
+        timestamp = datetime.datetime.now()
+        timestamp = timestamp.strftime("%Y-%m-%d-%H-%M-%S")
         data = request.form['data']
-        with open(f"../Data/{name}", "w") as f:
+        with open(f"../Data/{timestamp}.csv", "w") as f:
             f.write(data)
         return "Succesfully added data"
 
