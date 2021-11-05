@@ -4,18 +4,19 @@ conda_env: conda.yaml
 
 entry_points:
   merge_data:
-    command: "python merge_data.py"
+    command: "./merge_data.sh"
 
-  data_processing: # python file
-    command: "python etl_data.py --ratings-csv {ratings_csv} --max-row-limit {max_row_limit}"
+  data_validation_acc:
+    command: "great-expectations checkpoint run checkpoint_tac2"
 
-  data_validation: # great-expectations
-    command: "python etl_data.py --ratings-csv {ratings_csv} --max-row-limit {max_row_limit}"
+  data_validation_tac:
+    command: "great-expectations checkpoint run checkpoint_tac2"
+
+  data_train_test_split:
+    command: "python split_data.py"
+
+  data_processing:
+    command: "python process_data.py"
 
   train:
-    parameters:
-      a: int
     command: "python train.py"
-
-  serve:
-    command: "mlflow models serve -m model/my_model"

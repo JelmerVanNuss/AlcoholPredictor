@@ -29,14 +29,14 @@ def merge_data():
         pid = f.split('_')[0]
 
         # append data to existing user if it exists, otherwise create new one
-        if f in existing_pids:
+        if pid in existing_pids:
             tac_reading_data = pd.read_csv(os.path.join(tac_dir, f))
             user_tac_reading_data = pd.read_csv(os.path.join(user_tac_data_dir, f))
 
             tac_reading_data = tac_reading_data.append(user_tac_reading_data)
         else:
             tac_reading_data = pd.read_csv(os.path.join(user_tac_data_dir, f))
-        
+
         tac_reading_data.to_csv(os.path.join(tac_dir, f))
 
 
